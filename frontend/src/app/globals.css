@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* §3.2 Color Tokens - Light Theme (Minimalist Alabaster & Studio Clean) */
+    --primary: #005A52;         /* Refined Deep Cyprus */
+    --primary-hover: #00423C;
+    --secondary: #F4F3EF;       /* Studio Warm Alabaster */
+    --accent: #FFFFFF;
+    --success: #10B981;         /* Clean Emerald */
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --bg: #FAF9F6;              /* Alabaster Minimalist Off-White */
+    --surface: #FFFFFF;         /* Pure Clean White */
+    --surface-elevated: #F4F3EF;
+    --text-main: #18181B;       /* Zinc 900 - Deep Sophisticated Slate */
+    --text-muted: #71717A;      /* Zinc 500 - Balanced Clean Neutral */
+    --border-subtle: rgba(0, 0, 0, 0.06); /* Whisper-quiet hairline border */
+
+    /* Shadows for Minimalist Studio Elegance in Light Theme */
+    --shadow-clay: 0 16px 36px -6px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+    --shadow-clay-sm: 0 6px 16px -3px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    --shadow-clay-inset: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-neo-input: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark {
+    /* §3.2 Color Tokens - Dark Theme (Minimalist Deep Obsidian) */
+    --primary: #00A896;         /* Luminous Clean Teal/Emerald */
+    --primary-hover: #008F7A;
+    --secondary: #18181A;       /* Elevated Minimal Charcoal */
+    --accent: #222225;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --bg: #09090B;              /* Zinc 950 - Sleek Deep Obsidian */
+    --surface: #141416;         /* Refined Charcoal Surface */
+    --surface-elevated: #1C1C20;
+    --text-main: #FAFAFA;       /* Zinc 50 - Crisp Luminous White */
+    --text-muted: #A1A1AA;      /* Zinc 400 - Clean Neutral Gray */
+    --border-subtle: rgba(255, 255, 255, 0.08); /* Ultra-thin crisp border */
+
+    /* Shadows for Minimalist Studio Elegance in Dark Theme */
+    --shadow-clay: 0 20px 48px -8px rgba(0, 0, 0, 0.6), 0 6px 18px -2px rgba(0, 0, 0, 0.4);
+    --shadow-clay-sm: 0 8px 20px -4px rgba(0, 0, 0, 0.5), 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+    --shadow-clay-inset: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+    --shadow-neo-input: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+
+  --font-display: var(--font-kanesty), "Outfit", "Montserrat", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden; /* Prevent horizontal scroll baseline (§3.4) */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* @font-face fallback for Kanesty display font (§3.3) */
+@font-face {
+  font-family: "Kanesty";
+  src: local("Outfit Bold"), local("Montserrat Bold"), local("Arial Black");
+  font-weight: bold;
+  font-display: swap;
+}
+
+/* Surgical Visual Style System Classes (§3.1) */
+
+/* 1. Glassmorphism - Navbar, modals/dialogs, upload panel background */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.04);
+}
+.dark .glass-panel {
+  background: rgba(20, 20, 22, 0.85);
+  box-shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.5);
+}
+
+.glass-navbar {
+  background: rgba(250, 249, 246, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.dark .glass-navbar {
+  background: rgba(9, 9, 11, 0.85);
+}
+
+/* 2. Claymorphism - Primary buttons, file cards, tool cards */
+.clay-button {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-clay-sm);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+}
+.clay-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-clay);
+  background-color: var(--primary-hover);
+}
+.clay-button:active {
+  transform: scale(0.97);
+  box-shadow: var(--shadow-clay-inset);
+}
+
+.clay-card {
+  background-color: var(--surface);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-clay);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+.clay-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+.dark .clay-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* 3. Neomorphism - Input fields only (subtle inset shadow with WCAG AA focus ring) */
+@layer components {
+  .neo-input {
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-neo-input);
+    border: 1px solid transparent;
+    color: var(--text-main);
+    padding: 0.75rem 1rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .neo-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 71, 65, 0.25);
+  }
+  .dark .neo-input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 110, 101, 0.35);
+  }
+  @media (max-width: 640px) {
+    .neo-input {
+      font-size: 16px !important; /* Prevent iOS Safari auto-zoom on input focus (§15 step 15) */
+    }
+  }
+}
+
+/* 4. Liquid Glass - Upload panel, buttons, and processing animations */
+@keyframes liquid-pulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes liquid-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15px, -15px) scale(1.08); }
+  66% { transform: translate(-10px, 10px) scale(0.95); }
+}
+
+.animate-liquid-float {
+  animation: liquid-float 10s ease-in-out infinite;
+}
+
+.liquid-progress-bar {
+  background: linear-gradient(270deg, var(--primary), #28C76F, #00A896, var(--primary));
+  background-size: 300% 300%;
+  animation: liquid-pulse 3s ease infinite;
+}
+
+.liquid-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.06), 0 4px 16px -4px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+.dark .liquid-glass-card {
+  background: linear-gradient(135deg, rgba(20, 20, 22, 0.85) 0%, rgba(14, 14, 16, 0.65) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), 0 4px 16px -4px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, #007A70 50%, #004741 100%);
+  color: #FFFFFF;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 71, 65, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, filter 0.2s ease;
+}
+.liquid-glass-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 71, 65, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+  filter: brightness(1.1);
+}
+.liquid-glass-btn:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.liquid-glass-icon-box {
+  background: linear-gradient(135deg, #004741 0%, #007A70 50%, #002824 100%) !important;
+  color: #FFFFFF !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 71, 65, 0.45), inset 0 1px 3px rgba(255, 255, 255, 0.35);
+}
+
+/* Skeleton loader shimmer animation (§7.3) */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+/* Respect prefers-reduced-motion (§3.5, §11) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Animated Mouse Pointer Override */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active button,
+  body.custom-cursor-active a,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active .cursor-pointer {
+    cursor: none !important;
+  }
+  body.custom-cursor-active input,
+  body.custom-cursor-active textarea {
+    cursor: text !important;
+  }
+}
+
+/* Hide Next.js Development Indicator Icon ("N" button) & Toasts */
+nextjs-portal,
+#nextjs-dev-tools-indicator,
+[data-nextjs-toast],
+[data-next-badge],
+#next-logo {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
