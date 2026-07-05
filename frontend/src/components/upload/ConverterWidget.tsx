@@ -117,7 +117,7 @@ function createDocxArchive(text: string, title: string): Blob {
   eocdView.setUint32(16, offset, true);
   eocdView.setUint16(20, 0, true);
 
-  const allParts: BlobPart[] = [...localHeaders, ...centralDir, eocd];
+  const allParts = [...localHeaders, ...centralDir, eocd] as any[];
   return new Blob(allParts, { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
 }
 
