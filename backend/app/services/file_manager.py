@@ -74,15 +74,18 @@ async def save_upload_file(file: UploadFile) -> Tuple[str, str, int, str]:
     job_id = str(uuid.uuid4())
     detected_mime = await sniff_mime_type(file)
     
-    # Extract extension or infer from MIME
+    # Extract extension or infer from MIME and sanitize against traversal/executables
     orig_ext = os.path.splitext(file.filename or "")[1].lower()
-    if not orig_ext:
+    dangerous_exts = {".exe", ".sh", ".bat", ".cmd", ".php", ".py", ".pl", ".js", ".vbs", ".msi", ".dll", ".scr", ".pif", ".csh"}
+    if not orig_ext or orig_ext in dangerous_exts:
         ext_map = {
             "image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp",
             "application/pdf": ".pdf", "video/mp4": ".mp4", "audio/mpeg": ".mp3"
         }
         orig_ext = ext_map.get(detected_mime, ".bin")
         
+    # Sanitize characters in extension
+    orig_ext = "".join(c for c in orig_ext if c.isalnum() or c == ".")[:10]
     safe_filename = f"{job_id}{orig_ext}"
     filepath = os.path.join(settings.UPLOAD_DIR, safe_filename)
     

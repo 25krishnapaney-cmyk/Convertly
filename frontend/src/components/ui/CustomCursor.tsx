@@ -3,14 +3,6 @@
 import * as React from "react";
 import { motion, AnimatePresence, useSpring } from "framer-motion";
 
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  color: string;
-  size: number;
-}
-
 interface Ripple {
   id: number;
   x: number;
@@ -25,13 +17,10 @@ export function CustomCursor() {
   const [isVisible, setIsVisible] = React.useState(false);
   const [isTouchDevice, setIsTouchDevice] = React.useState(false);
 
-  const [particles, setParticles] = React.useState<Particle[]>([]);
   const [ripples, setRipples] = React.useState<Ripple[]>([]);
-  const particleIdRef = React.useRef(0);
   const rippleIdRef = React.useRef(0);
-  const lastParticleTimeRef = React.useRef(0);
 
-  // Smooth spring physics for trailing outer ring
+  // Smooth spring physics for trailing outer ring (hardware accelerated via transform)
   const ringX = useSpring(-100, { stiffness: 450, damping: 28 });
   const ringY = useSpring(-100, { stiffness: 450, damping: 28 });
 
@@ -74,21 +63,6 @@ export function CustomCursor() {
         setIsHovered(!!isInteractive && !isTextInput);
         setIsTextHovered(!!isTextInput);
       }
-
-      // Spawn floating liquid glass particles on movement (throttled to max ~25 per second)
-      const now = Date.now();
-      if (now - lastParticleTimeRef.current > 40) {
-        lastParticleTimeRef.current = now;
-        const colors = ["#00A896", "#28C76F", "#00E5FF", "#007A70"];
-        const newParticle: Particle = {
-          id: particleIdRef.current++,
-          x: e.clientX + (Math.random() - 0.5) * 12,
-          y: e.clientY + (Math.random() - 0.5) * 12,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          size: Math.random() * 5 + 3,
-        };
-        setParticles((prev) => [...prev.slice(-12), newParticle]);
-      }
     };
 
     const handleMouseDown = (e: MouseEvent) => {
@@ -99,7 +73,7 @@ export function CustomCursor() {
         x: e.clientX,
         y: e.clientY,
       };
-      setRipples((prev) => [...prev.slice(-4), newRipple]);
+      setRipples((prev) => [...prev.slice(-3), newRipple]);
     };
 
     const handleMouseUp = () => {
@@ -154,35 +128,6 @@ export function CustomCursor() {
               top: ripple.y - 24,
               width: 48,
               height: 48,
-            }}
-          />
-        ))}
-      </AnimatePresence>
-
-      {/* Trailing Particle Sparks */}
-      <AnimatePresence>
-        {particles.map((p) => (
-          <motion.div
-            key={p.id}
-            initial={{ opacity: 0.7, scale: 1, x: p.x, y: p.y }}
-            animate={{
-              opacity: 0,
-              scale: 0.2,
-              x: p.x + (Math.random() - 0.5) * 20,
-              y: p.y + Math.random() * 15 + 10, // Float downwards/sideways like dust
-            }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            onAnimationComplete={() => {
-              setParticles((prev) => prev.filter((item) => item.id !== p.id));
-            }}
-            className="absolute rounded-full shadow-sm"
-            style={{
-              left: -p.size / 2,
-              top: -p.size / 2,
-              width: p.size,
-              height: p.size,
-              backgroundColor: p.color,
-              boxShadow: `0 0 8px ${p.color}`,
             }}
           />
         ))}

@@ -127,9 +127,9 @@ async def download_file(job_id: str):
     orig_name = job_data.get("filename", "converted_file")
     base_name = os.path.splitext(orig_name)[0]
     
-    # Find matching output file in output directory
+    # Find matching output file in output directory strictly by job_id UUID
     for fname in os.listdir(settings.OUTPUT_DIR):
-        if fname.startswith(job_id) or fname.startswith(base_name):
+        if fname.startswith(job_id):
             fpath = os.path.join(settings.OUTPUT_DIR, fname)
             if os.path.isfile(fpath):
                 ext = os.path.splitext(fname)[1]

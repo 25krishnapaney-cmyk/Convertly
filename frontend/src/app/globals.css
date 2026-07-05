@@ -186,6 +186,9 @@ body {
 
 .animate-liquid-float {
   animation: liquid-float 10s ease-in-out infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .liquid-progress-bar {

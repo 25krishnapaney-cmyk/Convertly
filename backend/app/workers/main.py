@@ -28,9 +28,8 @@ async def run_conversion_job(ctx: Dict[Any, Any], job_id: str, input_path: str, 
         # Step 2: Processing
         await update_job_status(job_id, "processing", 30, f"Converting to {target_format.upper()}...")
         
-        # Determine output file path
-        base_name = os.path.splitext(os.path.basename(input_path))[0]
-        output_filename = f"{base_name}.{target_format.lower()}"
+        # Determine output file path using unique job_id UUID (§8.3, §9)
+        output_filename = f"{job_id}.{target_format.lower()}"
         output_path = os.path.join(settings.OUTPUT_DIR, output_filename)
         
         # Simulate processing progress for Phase 1/2 skeleton before hooking up specific binary commands
