@@ -60,7 +60,7 @@ export function Navbar() {
             <Layers className="w-5 h-5" />
           </div>
           <span className="font-display text-2xl tracking-tight font-bold text-main">
-            Convertly<span className="text-success">.</span>
+            File Grave<span className="text-success">.</span>
           </span>
         </Link>
 

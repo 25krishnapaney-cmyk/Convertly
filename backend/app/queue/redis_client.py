@@ -26,7 +26,7 @@ async def update_job_status(
     Also publishes to a pub/sub channel for immediate SSE push notification.
     """
     r = await get_redis_client()
-    key = f"convertly:job:{job_id}"
+    key = f"filegrave:job:{job_id}"
     
     data = {
         "job_id": job_id,
@@ -45,11 +45,11 @@ async def update_job_status(
     await r.expire(key, settings.FILE_TTL_SECONDS + 3600)
     
     # Publish to pub/sub for real-time SSE subscribers
-    await r.publish(f"convertly:pubsub:{job_id}", json.dumps(data))
+    await r.publish(f"filegrave:pubsub:{job_id}", json.dumps(data))
 
 async def get_job_status(job_id: str) -> Optional[Dict[str, Any]]:
     r = await get_redis_client()
-    key = f"convertly:job:{job_id}"
+    key = f"filegrave:job:{job_id}"
     data = await r.hgetall(key)
     if not data:
         return None

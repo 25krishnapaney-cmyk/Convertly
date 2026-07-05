@@ -1,7 +1,7 @@
 [project]
-name = "convertly-backend"
+name = "filegrave-backend"
 version = "0.1.0"
-description = "FastAPI backend for Convertly with async Redis task queue"
+description = "FastAPI backend for File Grave with async Redis task queue"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

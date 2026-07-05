@@ -37,7 +37,7 @@ services:
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - ./backend:/app
-      - /tmp/convertly:/tmp/convertly
+      - /tmp/filegrave:/tmp/filegrave
     depends_on:
       - redis
 

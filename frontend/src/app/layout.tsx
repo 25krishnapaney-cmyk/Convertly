@@ -13,15 +13,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Convertly — Convert Files in Seconds | Free & Zero Login",
+  title: "File Grave — Convert Files in Seconds | Free & Zero Login",
   description: "The fastest, lightest, most beautiful online file converter. Zero login, privacy-first ephemeral processing, and instant conversion for images, PDFs, videos, and audio.",
   keywords: ["file converter", "free converter", "no login", "privacy first", "convert jpg to png", "pdf converter", "fast file conversion"],
-  authors: [{ name: "Convertly Team" }],
+  authors: [{ name: "File Grave Team" }],
   openGraph: {
-    title: "Convertly — Convert Files in Seconds",
+    title: "File Grave — Convert Files in Seconds",
     description: "Zero login, privacy-first, ultra-fast online file converter.",
-    url: "https://convertly.app",
-    siteName: "Convertly",
+    url: "https://filegrave.app",
+    siteName: "File Grave",
     locale: "en_US",
     type: "website",
   },

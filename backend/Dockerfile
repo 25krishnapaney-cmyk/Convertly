@@ -19,17 +19,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 # Create non-root user for sandboxed subprocess execution (§8.2)
-RUN useradd -m -u 1000 convertly && \
-    mkdir -p /tmp/convertly/uploads /tmp/convertly/outputs && \
-    chown -R convertly:convertly /app /tmp/convertly
+RUN useradd -m -u 1000 filegrave && \
+    mkdir -p /tmp/filegrave/uploads /tmp/filegrave/outputs && \
+    chown -R filegrave:filegrave /app /tmp/filegrave
 
 COPY pyproject.toml ./
 RUN pip install --no-cache-dir -e .
 
 COPY . .
-RUN chown -R convertly:convertly /app
+RUN chown -R filegrave:filegrave /app
 
-USER convertly
+USER filegrave
 
 EXPOSE 8000
 

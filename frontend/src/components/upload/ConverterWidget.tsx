@@ -508,7 +508,7 @@ export function ConverterWidget({
 
   // Simulate progress for UI preview when offline or standalone frontend
   const startSimulatedProgress = (file: File, target: string) => {
-    console.warn("[Convertly Dev] Backend offline or unreachable. Using simulated SSE stream for UI preview.");
+    console.warn("[File Grave Dev] Backend offline or unreachable. Using simulated SSE stream for UI preview.");
     setStatus("processing");
     setProgress(15);
     setStatusMessage("Scanning file for security threats...");

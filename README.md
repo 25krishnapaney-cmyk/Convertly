@@ -1,6 +1,6 @@
-# Convertly — Master Build
+# File Grave — Master Build
 
-**Convertly** is a zero-login, privacy-first, ultra-fast online file converter designed with a premium aesthetic inspired by Claude AI, Linear, Raycast, and Apple HIG.
+**File Grave** is a zero-login, privacy-first, ultra-fast online file converter designed with a premium aesthetic inspired by Claude AI, Linear, Raycast, and Apple HIG.
 
 ## Architecture
 

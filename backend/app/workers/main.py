@@ -11,7 +11,7 @@ from app.queue.redis_client import update_job_status
 from app.services.virus_scanner import scan_file_for_viruses
 from app.services.file_manager import cleanup_expired_files
 
-logger = logging.getLogger("convertly.worker")
+logger = logging.getLogger("filegrave.worker")
 
 async def run_conversion_job(ctx: Dict[Any, Any], job_id: str, input_path: str, target_format: str):
     """

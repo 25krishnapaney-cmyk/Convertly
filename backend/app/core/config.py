@@ -3,7 +3,7 @@ from pydantic import Field
 from typing import List
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Convertly API"
+    PROJECT_NAME: str = "File Grave API"
     VERSION: str = "0.1.0"
     API_PREFIX: str = "/api"
     
@@ -12,11 +12,11 @@ class Settings(BaseSettings):
     
     # Redis Queue
     REDIS_URL: str = Field(default="redis://localhost:6379/0", env="REDIS_URL")
-    REDIS_QUEUE_NAME: str = "convertly:queue"
+    REDIS_QUEUE_NAME: str = "filegrave:queue"
     
     # Ephemeral Storage & Limits
-    UPLOAD_DIR: str = "/tmp/convertly/uploads"
-    OUTPUT_DIR: str = "/tmp/convertly/outputs"
+    UPLOAD_DIR: str = "/tmp/filegrave/uploads"
+    OUTPUT_DIR: str = "/tmp/filegrave/outputs"
     FILE_TTL_SECONDS: int = 1800  # 30 minutes hard TTL (§8.1, §9)
     
     # Max upload sizes in bytes

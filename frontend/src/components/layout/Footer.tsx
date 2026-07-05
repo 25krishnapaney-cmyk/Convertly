@@ -56,7 +56,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
                 <Layers className="w-4 h-4" />
               </div>
-              <span className="font-display text-xl font-bold text-main">Convertly<span className="text-success">.</span></span>
+              <span className="font-display text-xl font-bold text-main">File Grave<span className="text-success">.</span></span>
             </Link>
             <p className="text-sm text-muted max-w-sm mb-6">
               The fastest, lightest, most beautiful online file converter. Built with privacy-first ephemeral processing and WCAG AA accessibility.
@@ -105,7 +105,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-subtle flex flex-col sm:flex-row items-center justify-between text-xs text-muted gap-4">
-          <p>© {new Date().getFullYear()} Convertly. No file is ever stored permanently.</p>
+          <p>© {new Date().getFullYear()} File Grave. No file is ever stored permanently.</p>
           <div className="flex items-center gap-6">
             <span>WCAG AA Compliant</span>
             <span>SSR / SSG Optimized</span>

@@ -33,7 +33,7 @@ async def upload_file(file: UploadFile = File(...)):
         
         # Store filepath and mime in Redis hash for later conversion pickup
         r = await get_redis_client()
-        await r.hset(f"convertly:job:{job_id}", mapping={
+        await r.hset(f"filegrave:job:{job_id}", mapping={
             "filepath": filepath,
             "filename": file.filename or "untitled",
             "mime_type": detected_mime,

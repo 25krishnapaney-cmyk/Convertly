@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Convertly Audio & Haptics Engine (§7.7, §15)
+ * File Grave Audio & Haptics Engine (§7.7, §15)
  * Utilizes Web Audio API for zero-latency, zero-network acoustic micro-interactions.
  */
 

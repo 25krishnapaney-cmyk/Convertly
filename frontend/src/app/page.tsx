@@ -219,7 +219,7 @@ export default function HomePage() {
               Built with precision for seamless, privacy-first file conversion.
             </h2>
             <p className="text-muted mt-4 text-base leading-relaxed">
-              Convertly was engineered to simplify file workflows without sacrificing your privacy or speed. Unlike traditional online converters that store, mine, or watermark your files, we process your documents in isolated ephemeral memory that is permanently wiped after 30 minutes.
+              File Grave was engineered to simplify file workflows without sacrificing your privacy or speed. Unlike traditional online converters that store, mine, or watermark your files, we process your documents in isolated ephemeral memory that is permanently wiped after 30 minutes.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a

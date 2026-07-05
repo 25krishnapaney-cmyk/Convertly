@@ -3,7 +3,7 @@ import shutil
 import logging
 from fastapi import HTTPException, status
 
-logger = logging.getLogger("convertly.scanner")
+logger = logging.getLogger("filegrave.scanner")
 
 async def scan_file_for_viruses(filepath: str) -> bool:
     """

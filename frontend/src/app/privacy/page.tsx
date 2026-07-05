@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
               <Lock className="w-5 h-5" /> 1. Zero Login & Zero Profiling
             </h2>
             <p className="text-sm text-muted">
-              Convertly does not require user registration, email verification, or passwords. We do not build user profiles, track personal conversion histories across sessions, or sell user metadata to third parties.
+              File Grave does not require user registration, email verification, or passwords. We do not build user profiles, track personal conversion histories across sessions, or sell user metadata to third parties.
             </p>
           </section>
 
