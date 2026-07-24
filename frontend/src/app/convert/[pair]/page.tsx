@@ -99,7 +99,7 @@ export default function ConvertToolPage() {
         <div className="flex items-center justify-between mb-8">
           <h3 className="font-display text-2xl font-bold text-main">Related Conversion Tools</h3>
           <Link href="/tools" className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1">
-            Explore all 120+ tools <ArrowRight className="w-4 h-4" />
+            Explore all 30+ tools <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -10,7 +10,7 @@ def create_convertly_icon(size=512):
     shadow_draw = ImageDraw.Draw(shadow)
     margin = int(size * 0.05)
     shadow_box = [margin, margin + int(size * 0.03), size - margin, size - margin + int(size * 0.03)]
-    radius = int(size * 0.28)
+    radius = int((size - 2 * margin) / 2)
     shadow_draw.rounded_rectangle(shadow_box, radius=radius, fill=(0, 0, 0, 80))
     shadow = shadow.filter(ImageFilter.GaussianBlur(int(size * 0.04)))
     

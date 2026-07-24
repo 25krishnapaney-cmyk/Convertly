@@ -14,12 +14,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "File Grave — Convert Files in Seconds | Free & Zero Login",
-  description: "The fastest, lightest, most beautiful online file converter. Zero login, privacy-first ephemeral processing, and instant conversion for images, PDFs, videos, and audio.",
-  keywords: ["file converter", "free converter", "no login", "privacy first", "convert jpg to png", "pdf converter", "fast file conversion"],
+  description: "The fastest, lightest, most beautiful online file converter. Zero login, privacy-first ephemeral processing, and instant conversion for images, PDFs, documents, and file compression.",
+  keywords: ["file converter", "free converter", "no login", "privacy first", "convert jpg to png", "pdf converter", "fast file conversion", "file compression", "zip compressor", "image compressor"],
   authors: [{ name: "File Grave Team" }],
   openGraph: {
     title: "File Grave — Convert Files in Seconds",
-    description: "Zero login, privacy-first, ultra-fast online file converter.",
+    description: "Zero login, privacy-first, ultra-fast online file converter and compressor.",
     url: "https://filegrave.app",
     siteName: "File Grave",
     locale: "en_US",

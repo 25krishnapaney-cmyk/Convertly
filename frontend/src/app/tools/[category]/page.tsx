@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { Search, Image as ImageIcon, FileText, Video, Music, ArrowRight, ArrowLeft, Sliders, X } from "lucide-react";
+import { Search, Image as ImageIcon, FileText, Archive, ArrowRight, ArrowLeft, Sliders, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getToolsByCategory, getToolIcon } from "@/lib/allTools";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
@@ -20,15 +20,10 @@ const CATEGORY_META: Record<string, { title: string; desc: string; icon: any }> 
     desc: "Convert PDF to Word, compress documents up to 80%, merge files, and export images instantly.",
     icon: FileText,
   },
-  video: {
-    title: "Video Converter & Audio Extractor Hub",
-    desc: "Convert MP4, MOV, AVI, WebM, and MKV files. Extract high-bitrate MP3 audio or compress for web sharing.",
-    icon: Video,
-  },
-  audio: {
-    title: "Audio Converter & Bitrate Studio",
-    desc: "Convert and compress MP3, WAV, AAC, FLAC, and OGG audio with studio-grade bitrate controls.",
-    icon: Music,
+  compression: {
+    title: "File Compression & Optimization Hub",
+    desc: "Compress files into ZIP archives, optimize PDFs up to 80%, and reduce image sizes with smart compression engines.",
+    icon: Archive,
   },
 };
 

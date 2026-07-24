@@ -15,15 +15,7 @@ MAGIC_SIGNATURES = {
     b"GIF89a": "image/gif",
     b"RIFF": "image/webp",  # RIFF....WEBP
     b"%PDF": "application/pdf",
-    b"\x00\x00\x00\x18ftyp": "video/mp4",
-    b"\x00\x00\x00\x1Cftyp": "video/mp4",
-    b"\x00\x00\x00\x20ftyp": "video/mp4",
-    b"\x1a\x45\xdf\xa3": "video/webm", # Matroska / WebM
-    b"ID3": "audio/mpeg",
-    b"\xFF\xFB": "audio/mpeg",
-    b"OggS": "audio/ogg",
-    b"RIFF....WAVE": "audio/wav",
-    b"PK\x03\x04": "application/zip", # DOCX, XLSX, PPTX, etc.
+    b"PK\x03\x04": "application/zip", # DOCX, XLSX, PPTX, ZIP, etc.
 }
 
 async def sniff_mime_type(file: UploadFile) -> str:
@@ -50,11 +42,8 @@ def validate_file_size(size_bytes: int, mime_type: str):
     if mime_type.startswith("image/"):
         limit = settings.MAX_IMAGE_SIZE_BYTES
         label = "25MB"
-    elif mime_type.startswith("video/"):
-        limit = settings.MAX_VIDEO_SIZE_BYTES
-        label = "500MB"
-    elif mime_type.startswith("audio/"):
-        limit = settings.MAX_AUDIO_SIZE_BYTES
+    elif mime_type == "application/zip" or mime_type == "application/gzip":
+        limit = settings.MAX_COMPRESSION_SIZE_BYTES
         label = "100MB"
     else:
         limit = settings.MAX_DOCUMENT_SIZE_BYTES

@@ -14,7 +14,7 @@ export default function AllToolsPage() {
   const [isTransitioning, setIsTransitioning] = React.useState(false);
   const [isSearchFocused, setIsSearchFocused] = React.useState(false);
 
-  const categories = ["All", "Image Tools", "PDF Tools", "Video", "Audio", "Specialized"];
+  const categories = ["All", "Image Tools", "PDF Tools", "Compression"];
 
   const handleCategoryChange = (cat: string) => {
     if (cat === selectedCategory) return;
@@ -34,13 +34,13 @@ export default function AllToolsPage() {
     <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 flex-1">
       <div className="max-w-3xl mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase mb-4">
-          <Sparkles className="w-3.5 h-3.5" /> 120+ Format Combinations
+          <Sparkles className="w-3.5 h-3.5" /> 30+ Format Combinations
         </div>
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-main mb-4">
-          All Conversion & Pro Tools
+          All Conversion & Compression Tools
         </h1>
         <p className="text-muted text-lg">
-          Search over 120+ format pairs and advanced compression engines. Zero login, 30-minute auto-deletion, and instant processing.
+           Search over 30+ format pairs and advanced compression engines. Zero login, 30-minute auto-deletion, and instant processing.
         </p>
       </div>
 

@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
-  FileText, Image as ImageIcon, Video, Music, 
+  FileText, Image as ImageIcon, Archive, 
   ShieldCheck, Clock, Lock, ArrowRight 
 } from "lucide-react";
 import { ConverterWidget } from "@/components/upload/ConverterWidget";
@@ -27,20 +27,12 @@ const CATEGORY_SHORTCUTS = [
     badge: "Popular",
   },
   {
-    title: "Video Tools",
-    desc: "MP4, MOV, WebM, GIF, AVI, MKV",
-    icon: Video,
-    href: "/tools/video",
-    color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-    badge: "FFmpeg Powered",
-  },
-  {
-    title: "Audio Converter",
-    desc: "MP3, WAV, OGG, FLAC, M4A, AAC",
-    icon: Music,
-    href: "/tools/audio",
+    title: "File Compression",
+    desc: "ZIP, PDF Compress, Image Compress",
+    icon: Archive,
+    href: "/tools/compression",
     color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    badge: "Lossless Option",
+    badge: "Pro Tools",
   },
 ];
 
@@ -48,14 +40,12 @@ const POPULAR_CONVERSIONS = [
   { from: "JPG", to: "PNG", label: "JPG to PNG", href: "/convert/jpg-to-png" },
   { from: "PNG", to: "WebP", label: "PNG to WebP", href: "/convert/png-to-webp" },
   { from: "PDF", to: "JPG", label: "PDF to JPG", href: "/convert/pdf-to-jpg" },
-  { from: "MP4", to: "MP3", label: "MP4 to MP3", href: "/convert/mp4-to-mp3" },
   { from: "HEIC", to: "JPG", label: "HEIC to JPG", href: "/convert/heic-to-jpg" },
   { from: "DOCX", to: "PDF", label: "Word to PDF", href: "/convert/docx-to-pdf" },
   { from: "WEBP", to: "PNG", label: "WebP to PNG", href: "/convert/webp-to-png" },
-  { from: "MOV", to: "MP4", label: "MOV to MP4", href: "/convert/mov-to-mp4" },
   { from: "PDF", to: "OPT", label: "PDF Compress", href: "/convert/pdf-compressor" },
   { from: "IMG", to: "OPT", label: "Image Compress", href: "/convert/image-compressor" },
-  { from: "WAV", to: "MP3", label: "WAV to MP3", href: "/convert/wav-to-mp3" },
+  { from: "FILE", to: "ZIP", label: "File Compress", href: "/convert/file-compressor" },
   { from: "AVIF", to: "PNG", label: "AVIF to PNG", href: "/convert/avif-to-png" },
 ];
 
@@ -141,11 +131,11 @@ export default function HomePage() {
             <p className="text-muted mt-1 text-base">Select a dedicated category for specialized format options and settings.</p>
           </div>
           <Link href="/tools" className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1">
-            View all 120+ tools <ArrowRight className="w-4 h-4" />
+            View all 30+ tools <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CATEGORY_SHORTCUTS.map((cat, idx) => {
             const Icon = cat.icon;
             return (

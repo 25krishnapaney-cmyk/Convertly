@@ -12,8 +12,7 @@ const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Image Tools", href: "/tools/image" },
   { label: "PDF Tools", href: "/tools/pdf" },
-  { label: "Video", href: "/tools/video" },
-  { label: "Audio", href: "/tools/audio" },
+  { label: "Compress", href: "/tools/compression" },
   { label: "All Tools", href: "/tools" },
   { label: "About", href: "/#about" },
 ];

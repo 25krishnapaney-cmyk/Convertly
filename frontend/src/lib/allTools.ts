@@ -1,12 +1,12 @@
-import { Image as ImageIcon, FileText, Video, Music, Archive, Sliders, Layers } from "lucide-react";
+import { Image as ImageIcon, FileText, Archive, Sliders, Layers } from "lucide-react";
 
 export interface ToolItem {
   id: string; // e.g. "jpg-to-png" or "pdf-compressor"
   label: string; // e.g. "JPG to PNG"
   from: string; // e.g. "JPG"
   to: string; // e.g. "PNG"
-  category: "Image Tools" | "PDF Tools" | "Video" | "Audio" | "Specialized";
-  categorySlug: "image" | "pdf" | "video" | "audio" | "specialized";
+  category: "Image Tools" | "PDF Tools" | "Compression";
+  categorySlug: "image" | "pdf" | "compression";
   desc: string;
   isSpecialized?: boolean;
   badge?: string;
@@ -26,7 +26,6 @@ export const ALL_CONVERSION_TOOLS: ToolItem[] = [
   { id: "avif-to-jpg", label: "AVIF to JPG", from: "AVIF", to: "JPG", category: "Image Tools", categorySlug: "image", desc: "Convert modern AVIF format into standard JPG." },
   { id: "svg-to-png", label: "SVG to PNG", from: "SVG", to: "PNG", category: "Image Tools", categorySlug: "image", desc: "Render scalable vector SVG files into high-res PNG." },
   { id: "png-to-svg", label: "PNG to SVG", from: "PNG", to: "SVG", category: "Image Tools", categorySlug: "image", desc: "Vectorize raster PNG images into SVG format." },
-  { id: "gif-to-mp4", label: "GIF to MP4", from: "GIF", to: "MP4", category: "Image Tools", categorySlug: "image", desc: "Convert animated GIFs into smooth video MP4 clips." },
   { id: "jpg-to-pdf", label: "JPG to PDF", from: "JPG", to: "PDF", category: "Image Tools", categorySlug: "image", desc: "Combine multiple JPG images into a single PDF document.", badge: "Top Rated" },
   { id: "png-to-pdf", label: "PNG to PDF", from: "PNG", to: "PDF", category: "Image Tools", categorySlug: "image", desc: "Convert PNG images into printable PDF documents." },
   { id: "bmp-to-png", label: "BMP to PNG", from: "BMP", to: "PNG", category: "Image Tools", categorySlug: "image", desc: "Convert uncompressed bitmap files to PNG." },
@@ -43,32 +42,10 @@ export const ALL_CONVERSION_TOOLS: ToolItem[] = [
   { id: "txt-to-pdf", label: "TXT to PDF", from: "TXT", to: "PDF", category: "PDF Tools", categorySlug: "pdf", desc: "Convert plain text files into professional PDF reports." },
   { id: "epub-to-pdf", label: "EPUB to PDF", from: "EPUB", to: "PDF", category: "PDF Tools", categorySlug: "pdf", desc: "Convert eBook EPUB files to standard PDF format." },
 
-  // --- SPECIALIZED PRO TOOLS (§15 step 9) ---
-  { id: "pdf-compressor", label: "PDF Compressor", from: "PDF", to: "PDF", category: "Specialized", categorySlug: "specialized", desc: "Compress heavy PDF documents up to 80% without losing text readability.", isSpecialized: true, badge: "Pro Tool" },
-  { id: "image-compressor", label: "Image Compressor", from: "IMAGE", to: "OPT", category: "Specialized", categorySlug: "specialized", desc: "Smart lossy/lossless compression for JPG, PNG, and WebP images.", isSpecialized: true, badge: "Pro Tool" },
-  { id: "image-resizer", label: "Image Resizer", from: "IMAGE", to: "RESIZE", category: "Specialized", categorySlug: "specialized", desc: "Resize pixel dimensions and change aspect ratio of images.", isSpecialized: true, badge: "Pro Tool" },
-  { id: "video-compressor", label: "Video Compressor", from: "VIDEO", to: "OPT", category: "Specialized", categorySlug: "specialized", desc: "Reduce MP4 and MOV video sizes with H.264/HEVC encoding.", isSpecialized: true, badge: "Pro Tool" },
-
-  // --- VIDEO TOOLS ---
-  { id: "mp4-to-mp3", label: "MP4 to MP3", from: "MP4", to: "MP3", category: "Video", categorySlug: "video", desc: "Extract crystal clear MP3 audio tracks from MP4 videos.", badge: "Popular" },
-  { id: "mp4-to-wav", label: "MP4 to WAV", from: "MP4", to: "WAV", category: "Video", categorySlug: "video", desc: "Extract uncompressed lossless WAV audio tracks from MP4 videos." },
-  { id: "mov-to-mp3", label: "MOV to MP3", from: "MOV", to: "MP3", category: "Video", categorySlug: "video", desc: "Extract audio tracks from Apple MOV video recordings." },
-  { id: "webm-to-mp3", label: "WebM to MP3", from: "WebM", to: "MP3", category: "Video", categorySlug: "video", desc: "Convert WebM video audio streams into portable MP3." },
-  { id: "mkv-to-mp3", label: "MKV to MP3", from: "MKV", to: "MP3", category: "Video", categorySlug: "video", desc: "Extract high-quality MP3 audio from Matroska MKV containers." },
-  { id: "avi-to-mp3", label: "AVI to MP3", from: "AVI", to: "MP3", category: "Video", categorySlug: "video", desc: "Extract MP3 audio tracks from legacy AVI video files." },
-  { id: "mov-to-mp4", label: "MOV to MP4", from: "MOV", to: "MP4", category: "Video", categorySlug: "video", desc: "Convert Apple MOV recordings into universally playable MP4.", badge: "Top Rated" },
-  { id: "webm-to-mp4", label: "WebM to MP4", from: "WebM", to: "MP4", category: "Video", categorySlug: "video", desc: "Convert HTML5 WebM videos to standard H.264 MP4 format." },
-  { id: "mp4-to-gif", label: "MP4 to GIF", from: "MP4", to: "GIF", category: "Video", categorySlug: "video", desc: "Create high-frame animated GIFs from video clips." },
-  { id: "mkv-to-mp4", label: "MKV to MP4", from: "MKV", to: "MP4", category: "Video", categorySlug: "video", desc: "Convert Matroska MKV container files into standard MP4." },
-  { id: "avi-to-mp4", label: "AVI to MP4", from: "AVI", to: "MP4", category: "Video", categorySlug: "video", desc: "Convert legacy AVI recordings to compressed MP4." },
-
-  // --- AUDIO TOOLS ---
-  { id: "wav-to-mp3", label: "WAV to MP3", from: "WAV", to: "MP3", category: "Audio", categorySlug: "audio", desc: "Compress uncompressed studio WAV audio into 320k MP3.", badge: "Popular" },
-  { id: "flac-to-mp3", label: "FLAC to MP3", from: "FLAC", to: "MP3", category: "Audio", categorySlug: "audio", desc: "Convert lossless FLAC music files into portable MP3." },
-  { id: "m4a-to-mp3", label: "M4A to MP3", from: "M4A", to: "MP3", category: "Audio", categorySlug: "audio", desc: "Convert Apple M4A voice memos and audio to standard MP3." },
-  { id: "mp3-to-wav", label: "MP3 to WAV", from: "MP3", to: "WAV", category: "Audio", categorySlug: "audio", desc: "Decompress MP3 files into uncompressed WAV format." },
-  { id: "ogg-to-mp3", label: "OGG to MP3", from: "OGG", to: "MP3", category: "Audio", categorySlug: "audio", desc: "Convert Vorbis OGG audio streams to universal MP3." },
-  { id: "aac-to-mp3", label: "AAC to MP3", from: "AAC", to: "MP3", category: "Audio", categorySlug: "audio", desc: "Convert advanced audio coding AAC files to MP3 format." },
+  // --- COMPRESSION TOOLS ---
+  { id: "pdf-compressor", label: "PDF Compressor", from: "PDF", to: "PDF", category: "Compression", categorySlug: "compression", desc: "Compress heavy PDF documents up to 80% without losing text readability." },
+  { id: "image-compressor", label: "Image Compressor", from: "IMAGE", to: "OPT", category: "Compression", categorySlug: "compression", desc: "Smart lossy/lossless compression for JPG, PNG, and WebP images." },
+  { id: "file-compressor", label: "File Compressor", from: "FILE", to: "ZIP", category: "Compression", categorySlug: "compression", desc: "Compress any file into a lightweight ZIP archive for easy sharing and storage." },
 ];
 
 export function getToolIcon(category: string) {
@@ -79,15 +56,9 @@ export function getToolIcon(category: string) {
     case "PDF Tools":
     case "pdf":
       return FileText;
-    case "Video":
-    case "video":
-      return Video;
-    case "Audio":
-    case "audio":
-      return Music;
-    case "Specialized":
-    case "specialized":
-      return Sliders;
+    case "Compression":
+    case "compression":
+      return Archive;
     default:
       return Layers;
   }

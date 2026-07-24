@@ -34,7 +34,7 @@ export function Footer() {
             </div>
             <div>
               <h4 className="font-semibold text-sm text-main">Ultra-Fast Engines</h4>
-              <p className="text-xs text-muted mt-0.5">Powered by FFmpeg, ImageMagick & LibreOffice.</p>
+              <p className="text-xs text-muted mt-0.5">Powered by Pillow, pypdfium2 & Compression engines.</p>
             </div>
           </div>
 
@@ -72,8 +72,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-muted">
               <li><Link href="/tools/image" className="hover:text-main transition-colors">Image Tools</Link></li>
               <li><Link href="/tools/pdf" className="hover:text-main transition-colors">PDF Tools</Link></li>
-              <li><Link href="/tools/video" className="hover:text-main transition-colors">Video Converter</Link></li>
-              <li><Link href="/tools/audio" className="hover:text-main transition-colors">Audio Converter</Link></li>
+              <li><Link href="/tools/compression" className="hover:text-main transition-colors">File Compression</Link></li>
               <li><Link href="/tools" className="hover:text-main transition-colors">All Tools Directory</Link></li>
             </ul>
           </div>
@@ -84,8 +83,8 @@ export function Footer() {
               <li><Link href="/convert/jpg-to-png" className="hover:text-main transition-colors">JPG to PNG</Link></li>
               <li><Link href="/convert/png-to-webp" className="hover:text-main transition-colors">PNG to WebP</Link></li>
               <li><Link href="/convert/pdf-to-jpg" className="hover:text-main transition-colors">PDF to JPG</Link></li>
-              <li><Link href="/convert/mp4-to-mp3" className="hover:text-main transition-colors">MP4 to MP3</Link></li>
               <li><Link href="/convert/docx-to-pdf" className="hover:text-main transition-colors">DOCX to PDF</Link></li>
+              <li><Link href="/convert/file-compressor" className="hover:text-main transition-colors">File Compress</Link></li>
             </ul>
           </div>
 
